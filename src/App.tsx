@@ -14,7 +14,7 @@ function App() {
   while (dateNow.toFormat("dd") <=dateEnd.toFormat("dd"))
   {
     const eventFactory = new EventFactory(dateNow);
-    events=events.concat(eventFactory.generateRandomEventArray(5));
+    events=events.concat(eventFactory.generateRandomEventArray(Math.ceil(Math.random()*10)));
     dateNow=dateNow.plus({days:1});
   }
   

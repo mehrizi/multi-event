@@ -5,7 +5,7 @@ export class EventFactory {
     // Define the default options
     private defaultOptions = {
       titles: ['Meeting', 'Presentation', 'Lunch', 'Workshop', 'Conference'],
-      colors: ['red', 'blue', 'green', 'yellow', 'orange'],
+      colors: ['#009688', '#00bcd4', '#03a9f4', '#d4e157', '#8bc34a','#ffe082','#ff9800'],
     };
   
     constructor(private day: DateTime) {}

@@ -11,14 +11,14 @@ $h: 23px;
     display: block;
     font-family: roboto;
 
-    .multi-event-calendar::after {
+    .me-calendar::after {
         content: "";
         clear: both;
         display: table;
     }
 
-    .multi-event-calendar {
-        .multi-event-day {
+    .me-calendar {
+        .me-day {
             width: $cellWidth - $spacing;
             padding-top: $cellWidth - $spacing;
             margin: 0.5 * $spacing;
@@ -100,81 +100,92 @@ $h: 23px;
                     color: #718096;
                 }
 
-                &.tenders-container {
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    z-index: 5;
 
-                    >span {
-                        transition: background-color 0.1s, transform 0.6s ease-out,
-                            left 0.6s;
-                        width: $w;
-                        height: $h;
-                        overflow: visible;
-                        position: absolute;
-                        box-sizing: border-box;
-                        display: block;
-                        //transform: translateY(-1*$hw) translateX(-1*$hw);
-                        z-index: 5;
-                        padding: 0 5px 0 0;
-                        text-indent: 10px;
-                        line-height: $h;
+            }
+            &:hover {
+                >div.me-events-container {
+                    z-index: 6;
 
+                    >div.me-event {
+                        background: white;
+                        width: fit-content;
+                        box-shadow: -4px 0px 6px rgba(0, 0, 0, 0.3);
+                        z-index: 6;
+                        border-radius: 0 7px 7px 7px;
+                        left: 15% !important;
+                        top: 0 !important;
+
+                        //transform: translateX(0) translateY(-50%);
                         >span {
-                            visibility: hidden;
-                            transition: all 0.5s, visibility 0;
-                            white-space: nowrap;
+                            visibility: visible;
                         }
 
                         @for $i from 1 through 10 {
                             &:nth-child(#{$i}) {
-                                left: 50%+ 47% * math.sin(($i - 1) * 20deg); //calc(50% - $hw);
-                                top: 50% - 47% * math.cos(($i - 1) * 20deg);
+                                z-index: (10 + $i);
+                                transform: translateY(1 * ($i - 1) * $h);
                             }
                         }
 
                         i.dot {
-                            border: 1px solid white;
-                            position: absolute;
-                            left: -$hw;
-                            top: -$hw;
-                        }
-                    }
-                }
-
-                &:hover {
-                    &.tenders-container {
-                        z-index: 6;
-
-                        >span {
-                            background: white;
-                            width: fit-content;
-                            box-shadow: -4px 0px 6px rgba(0, 0, 0, 0.3);
-                            z-index: 6;
-                            border-radius: 0 7px 7px 7px;
-                            left: 15%;
-                            top: 0;
-
-                            //transform: translateX(0) translateY(-50%);
-                            >span {
-                                visibility: visible;
-                            }
-
-                            @for $i from 1 through 10 {
-                                &:nth-child(#{$i}) {
-                                    z-index: (10 + $i);
-                                    transform: translateY(1 * ($i - 1) * $h);
-                                }
-                            }
-
-                            i.dot {
-                                outline: 4px solid white;
-                            }
+                            outline: 4px solid white;
                         }
                     }
                 }
             }
+
+            >div.me-events-container {
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 5;
+
+                >div.me-event {
+                    transition: background-color 0.1s, transform 0.6s ease-out,
+                        left 0.6s;
+                    width: $w;
+                    height: $h;
+                    overflow: visible;
+                    position: absolute;
+                    box-sizing: border-box;
+                    display: block;
+                    //transform: translateY(-1*$hw) translateX(-1*$hw);
+                    z-index: 5;
+                    padding: 0 5px 0 0;
+                    text-indent: 10px;
+                    line-height: $h;
+
+                    >span {
+                        visibility: hidden;
+                        transition: all 0.5s, visibility 0;
+                        white-space: nowrap;
+
+                        >span.me-event-time{
+                            padding-right: 10px;
+                            font-weight: bold;
+
+                        }
+                    }
+
+                    @for $i from 1 through 10 {
+                        &:nth-child(#{$i}) {
+                            left: 50%+ 46% * math.sin(($i - 1) * 20deg); //calc(50% - $hw);
+                            top: 50% - 47% * math.cos(($i - 1) * 20deg);
+                        }
+                    }
+
+                    i.dot {
+                        // border: 1px solid rgb(116, 116, 116);
+                        position: absolute;
+                        width: 5px;
+                        height:5px;
+                        border-radius:50%;
+                        left: -$hw;
+                        top: -$hw;
+                    }
+                }
+            }
+
         }
 
     }
