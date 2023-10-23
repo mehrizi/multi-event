@@ -5,6 +5,7 @@ export interface CalendarProps {
     events?: Event[];
     now?: DateTime
     config?: MultiEventConfig
+
 }
 
 export interface Event {
@@ -21,25 +22,35 @@ export interface MultiEventProps {
     children: ReactNode;
     events: Event[];
     config?: MultiEventConfig;
+    calendar?: 'buddhist'
+    | 'chinese'
+    | 'coptic'
+    | 'ethiopiac'
+    | 'ethiopic'
+    | 'hebrew'
+    | 'indian'
+    | 'islamic'
+    | 'islamicc'
+    | 'iso8601'
+    | 'japanese'
+    | 'persian'
+    | 'roc'
 }
 
-export enum CalendarType {
-    Buddhist = 'buddhist',
-    Chinese = 'chinese',
-    Coptic = 'coptic',
-    EthiopicAmharic = 'ethiopiac',
-    Ethiopic = 'ethiopic',
-    Hebrew = 'hebrew',
-    Indian = 'indian',
-    Islamic = 'islamic',
-    IslamicCivil = 'islamicc',
-    ISO8601 = 'iso8601',
-    Japanese = 'japanese',
-    Persian = 'persian',
-    ROC = 'roc',
-  }
 export interface MultiEventConfig {
-    calendar?: CalendarType
+    calendar?: 'buddhist'
+    | 'chinese'
+    | 'coptic'
+    | 'ethiopiac'
+    | 'ethiopic'
+    | 'hebrew'
+    | 'indian'
+    | 'islamic'
+    | 'islamicc'
+    | 'iso8601'
+    | 'japanese'
+    | 'persian'
+    | 'roc'
     weekends: number[]
-    
+
 }

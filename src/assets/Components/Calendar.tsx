@@ -21,7 +21,6 @@ function Calendar({ config, events, now }: CalendarProps): JSX.Element {
       days.push(startDay.plus({ days: i }));
     }
   }
-  console.log(days);
 
   const getDayEvents = (day: luxon) => {
     return events?.filter((event) => {
