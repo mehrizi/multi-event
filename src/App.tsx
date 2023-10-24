@@ -18,7 +18,6 @@ function App() {
     dateNow=dateNow.plus({days:1});
   }
   
-  console.log(events)
   return (
     <>
       <h1>A simple multi event Calendar</h1>

@@ -5,23 +5,23 @@ $spacing: 1%;
 $w: 18pt;
 $hw: 4pt;
 $h: 23pt;
-:root {
-  
-    font-size: $default-font-size;
-  
-    @media (min-width: 768px) {
-      font-size: $default-font-size *1.5;
-    }
-  
-    @media (min-width: 1024px) {
-      font-size: $default-font-size *2;
-    }
-  
-    @media (min-width: 1440px) {
-      font-size: $default-font-size *2.5;
-    }
-  }
+$insidenessFactor: .9;
+
 .multi-event {
+    font-size: $default-font-size;
+
+    @media (min-width: 768px) {
+        font-size: $default-font-size *1.5;
+    }
+
+    @media (min-width: 1024px) {
+        font-size: $default-font-size *2;
+    }
+
+    @media (min-width: 1440px) {
+        font-size: $default-font-size *2.5;
+    }
+
     display: block;
     font-family: roboto;
 
@@ -32,6 +32,9 @@ $h: 23pt;
     }
 
     .me-calendar {
+        container-type: size;
+        container-name: mecalendar;
+
         .me-day {
             width: $cellWidth - $spacing;
             padding-top: $cellWidth - $spacing;
@@ -41,8 +44,8 @@ $h: 23pt;
             float: left;
             border-radius: 50%;
             background-color: #f1f1f1;
-            color: #6b7280;
-            font-size: 1rem;
+            color: #9fa8b9;
+            font-size: 5cqw;
             cursor: pointer;
             transition: all 0.4s;
 
@@ -87,7 +90,7 @@ $h: 23pt;
             &.day-name {
                 background-color: #fff;
                 color: #a5b9d8;
-                font-size: 1.3rem;
+                font-size: 5cqw;
                 cursor: default;
             }
 
@@ -116,6 +119,7 @@ $h: 23pt;
 
 
             }
+
             &:hover {
                 >div.me-events-container {
                     z-index: 6;
@@ -149,9 +153,10 @@ $h: 23pt;
             }
 
             >div.me-events-container {
-                top: 0;
-                width: 100%;
-                height: 100%;
+                // top: 0;
+                // width: 100%;
+                // height: 100%;
+                // position: absolute;
                 z-index: 5;
 
                 >div.me-event {
@@ -174,7 +179,7 @@ $h: 23pt;
                         transition: all 0.5s, visibility 0;
                         white-space: nowrap;
 
-                        >span.me-event-time{
+                        >span.me-event-time {
                             padding-right: 10px;
                             font-weight: bold;
 
@@ -183,19 +188,40 @@ $h: 23pt;
 
                     @for $i from 1 through 10 {
                         &:nth-child(#{$i}) {
-                            left: 50%+ 46% * math.sin(($i - 1) * 20deg); //calc(50% - $hw);
-                            top: 50% - 47% * math.cos(($i - 1) * 20deg);
+                            top: 50% * (1 - $insidenessFactor * math.cos(($i - 1) * 20deg));
+                            left: 50% *(1+ $insidenessFactor * math.sin(($i - 1) * 20deg)); //calc(50% - $hw);
                         }
                     }
 
                     i.dot {
                         // border: 1px solid rgb(116, 116, 116);
                         position: absolute;
-                        width: .5rem;
-                        height:.5rem;
-                        border-radius:50%;
-                        left: -$hw;
-                        top: -$hw;
+                        border-radius: 50%;
+                        left: -6px;
+                        top: -6px;
+                        width: 12px;
+                        height: 12px;
+
+                        @container mecalendar (max-width: 560px) {
+                            width: 8px;
+                            top: -4px;
+                            height: 8px;
+                            left: - 4px;
+                        }
+
+                        @container mecalendar (max-width: 320px) {
+                            width: 5px;
+                            top: -2.5px;
+                            height: 5px;
+                            left: - 2.5px;
+                        }
+
+                        @container mecalendar (max-width: 260px) {
+                            width: 4px;
+                            top: -2px;
+                            height: 4px;
+                            left: - 2px;
+                        }
                     }
                 }
             }

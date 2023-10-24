@@ -22,9 +22,12 @@ const meta: Meta<typeof MultiEvent> = {
   title: "Multi Event Calendar",
   component: MultiEvent,
   render: (args) => (
-    <MultiEvent {...args} events={events}>
+    <div style={{maxWidth:args.maxWidth,margin:"0 auto 0 auto"}}>
+    <MultiEvent {...args} events={events} config={{}}>
       <Calendar />
     </MultiEvent>
+
+    </div>
   ),
   argTypes: {
     calendar: {
@@ -43,6 +46,14 @@ const meta: Meta<typeof MultiEvent> = {
       , 'persian'
       , 'roc']
     },
+    maxWidth:{
+      control: "radio",
+      options : [780
+      , 560
+      , 320
+      , 260
+]
+    }
   },
 };
 
@@ -50,14 +61,16 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export function Primary(args: MultiEventProps) {
-  return (
-    <MultiEvent {...args} events={events}>
-      <Calendar />
-    </MultiEvent>
-  );
+// export function Primary(args: MultiEventProps) {
+//   return (
+//     <MultiEvent {...args} events={events}>
+//       <Calendar />
+//     </MultiEvent>
+//   );
+// }
+export const Primary = {
+  args:{
+    calendar:"persian",
+    maxWidth:320
+  } 
 }
-
-Primary.args = {
-  calendar:"persian",
-};

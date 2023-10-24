@@ -1,25 +1,17 @@
 import React from "react";
 import { Event, CalendarProps } from "../../types";
+import { DateHelper } from "../Helpers/DateHelper";
 
 function Calendar({ config, events, now }: CalendarProps): JSX.Element {
-  let weekday = now.toFormat("c");
-  const currentMonth = now.toFormat("m");
-  const toDecrease = weekday - 1;
-  let startDay = now.minus({ days: toDecrease });
-  let days = [];
-  let lastDay = startDay;
-  let firstDayOfMonthCount = 0;
-  while (firstDayOfMonthCount < 2) {
-    days.push(startDay);
-    startDay = startDay.plus({ days: 1 });
-    if (startDay.toFormat("d") == "1") firstDayOfMonthCount++;
-  }
-  if (days.length % 7 != 0) {
-    const daysToAdd = 6 - (days.length % 7);
-
-    for (let i = 0; i <= daysToAdd; i++) {
-      days.push(startDay.plus({ days: i }));
-    }
+  const monthStart = DateHelper.monthStart(now);
+  const monthEnd = DateHelper.monthEnd(now);
+  const calendarStart = DateHelper.weekStart(monthStart);
+  const calendarEnd = DateHelper.weekEnd(monthEnd);
+  let calendarNow = calendarStart.plus({days:0});
+  const days = [];
+  while (calendarNow.toMillis() < calendarEnd.toMillis()) {
+    days.push(calendarNow);
+    calendarNow = calendarNow.plus({ days: 1 });
   }
 
   const getDayEvents = (day: luxon) => {

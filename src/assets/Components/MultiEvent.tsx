@@ -5,53 +5,57 @@ import { DateTime } from "luxon";
 import "./MultiEvent.scss";
 
 import { YearBarProps, CalendarProps, MultiEventConfig } from "../../types";
+import { EventFactory } from "../Helpers/EventFactory";
 function MultiEvent({
   children,
   events,
-  calendar,
+  calendar = 'persian',
   config = {},
 }: MultiEventProps): JSX.Element {
   const defaultConfig: MultiEventConfig = {
-    calendar: "persian", // Default calendar type
     weekends: [6, 7],
   };
-  const mergedConfig: MultiEventConfig = { ...defaultConfig, ...config };
-  if (calendar) mergedConfig.calendar = calendar;
+  const [now, setNow] = useState(
+    DateTime.now()
+      .reconfigure({ outputCalendar: calendar })
+  );
 
+  const [meCalendar, setMeCalendar] = useState(calendar)
   useEffect(() => {
-    setFinalConfig({ ...finalConfig, calendar: calendar });
+    console.log("calendar Changed")
+    setMeCalendar(calendar);
+    setMeEvents(EventFactory.setEventsTimeCalendar(EventFactory.sort(events),calendar))
     setNow(
-      DateTime.now().reconfigure({ outputCalendar: calendar }).set({ day: 1 })
+      DateTime.now().reconfigure({ outputCalendar: calendar })
     );
   }, [calendar]);  
 
-  const [finalConfig, setFinalConfig] = useState({ ...mergedConfig });
+  // const [meEvents, setMeEvents] = useState(EventFactory.setEventsTimeCalendar(EventFactory.sort(events),calendar))
+  const [meEvents, setMeEvents] = useState(EventFactory.setEventsTimeCalendar(EventFactory.sort(events),calendar))
+  useEffect(() => {
+    console.log("events Changed")
+    setMeEvents(EventFactory.setEventsTimeCalendar(EventFactory.sort(events),meCalendar));
+  }, [events]);  
 
-  const [now, setNow] = useState(
-    DateTime.now()
-      .reconfigure({ outputCalendar: mergedConfig.calendar })
-      .set({ day: 1 })
-  );
+  const [meConfig, setMeConfig] = useState({ ...defaultConfig, ...config });
+  useEffect(() => {
+    console.log("config Changed")
+    setMeConfig({ ...defaultConfig, ...config });
+  }, [config]);  
+
 
   // Merge the provided config with the default config
 
-  const eventsOrdered = events.sort((a, b) => {
-    return a.time.toMillis() == b.time.toMillis()
-      ? 0
-      : a.time.toMillis() > b.time.toMillis()
-      ? 1
-      : -1;
-  });
-
+  
   const modifiedChildren = React.Children.map(children, (child) => {
     if (React.isValidElement<YearBarProps>(child) && child.type === YearBar) {
       return React.cloneElement<YearBarProps>(child, { now });
     }
     if (React.isValidElement<CalendarProps>(child) && child.type === Calendar) {
       return React.cloneElement<CalendarProps>(child, {
-        events: eventsOrdered,
+        events: meEvents,
         now,
-        config: mergedConfig,
+        config: meConfig,
       });
     }
     return child;
