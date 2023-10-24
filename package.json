@@ -1,5 +1,6 @@
 {
   "name": "multi-event",
+  "homepage": "https://mehrizi.github.io/multi-event",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,8 +10,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
+    "build-storybook": "storybook build",
+    "deploy-storybook": "gh-pages -d storybook-static"
+   },
   "dependencies": {
     "luxon": "^3.4.3",
     "react": "^18.2.0",
@@ -36,6 +38,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-storybook": "^0.6.15",
+    "gh-pages": "^6.0.0",
     "sass": "^1.69.3",
     "storybook": "7.5.1",
     "typescript": "^5.0.2",
