@@ -5,7 +5,7 @@ export class DateHelper {
   // Generate a random event with Luxon DateTime
   static monthStart(time: DateTime): DateTime {
     const dayInMonth = time.toFormat("d");
-    const start = time.plus({ days: -1 * dayInMonth });
+    const start = time.plus({ days: -1 * dayInMonth + 1 });
     return start;
   }
   static monthEnd(time: DateTime): DateTime {
@@ -23,6 +23,7 @@ export class DateHelper {
   static weekStart(time: DateTime): DateTime {
     const weekday = time.toFormat("c");
     const toDecrease = weekday - 1;
+    console.log(time,weekday);
     return time.plus({days:-1*toDecrease});
   }
   static weekEnd(time: DateTime): DateTime {

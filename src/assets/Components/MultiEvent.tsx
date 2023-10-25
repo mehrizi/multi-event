@@ -11,9 +11,11 @@ function MultiEvent({
   events,
   calendar = 'persian',
   config = {},
+  today = DateTime.now()
 }: MultiEventProps): JSX.Element {
   const defaultConfig: MultiEventConfig = {
     weekends: [6, 7],
+    rtl: false
   };
   const [now, setNow] = useState(
     DateTime.now()
@@ -43,25 +45,33 @@ function MultiEvent({
     setMeConfig({ ...defaultConfig, ...config });
   }, [config]);  
 
+  today = today.reconfigure({ outputCalendar: meCalendar });
+  // const [meToday, setMeToday] = useState(today.reconfigure({ outputCalendar: meCalendar }));
+  // useEffect(() => {
+  //   console.log("today Changed",today)
+  //   setMeToday(today.reconfigure({ outputCalendar: meCalendar }));
+  // }, [today]);  
+
 
   // Merge the provided config with the default config
 
   
   const modifiedChildren = React.Children.map(children, (child) => {
     if (React.isValidElement<YearBarProps>(child) && child.type === YearBar) {
-      return React.cloneElement<YearBarProps>(child, { now });
+      return React.cloneElement<YearBarProps>(child,  {setNow, now });
     }
     if (React.isValidElement<CalendarProps>(child) && child.type === Calendar) {
       return React.cloneElement<CalendarProps>(child, {
         events: meEvents,
         now,
         config: meConfig,
+        today: today
       });
     }
     return child;
   });
   return (
-    <div className="multi-event">
+    <div className={"multi-event"+(meConfig.rtl?" rtl":"")}>
       <div className="multi-event-content">{modifiedChildren}</div>
     </div>
   );

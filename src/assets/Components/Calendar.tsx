@@ -1,15 +1,16 @@
 import React from "react";
 import { Event, CalendarProps } from "../../types";
 import { DateHelper } from "../Helpers/DateHelper";
+import { DateTime } from "luxon";
 
-function Calendar({ config, events, now }: CalendarProps): JSX.Element {
+function Calendar({ config, events, now ,today=DateTime.now()}: CalendarProps): JSX.Element {
   const monthStart = DateHelper.monthStart(now);
   const monthEnd = DateHelper.monthEnd(now);
   const calendarStart = DateHelper.weekStart(monthStart);
   const calendarEnd = DateHelper.weekEnd(monthEnd);
   let calendarNow = calendarStart.plus({days:0});
   const days = [];
-  while (calendarNow.toMillis() < calendarEnd.toMillis()) {
+  while (calendarNow.toMillis() <= calendarEnd.toMillis()) {
     days.push(calendarNow);
     calendarNow = calendarNow.plus({ days: 1 });
   }
@@ -20,8 +21,6 @@ function Calendar({ config, events, now }: CalendarProps): JSX.Element {
     });
   };
   return (
-    <div>
-      <h3>Calendar Component</h3>
       <div className="me-calendar">
         {days.map((day, i) => {
           if (i >= 7) return <span />;
@@ -40,6 +39,8 @@ function Calendar({ config, events, now }: CalendarProps): JSX.Element {
           if (day.toFormat("d") == "1") classes += " month-first-day";
           if (config?.weekends.indexOf(1 * day.toFormat("c")) > -1)
             classes += " weekend";
+          if (today.toFormat('yyyy M dd')==day.toFormat('yyyy M dd'))
+            classes += " today";
           return (
             <div className={classes} key={i}>
               <span>{day.toFormat("d")}</span>
@@ -63,7 +64,6 @@ function Calendar({ config, events, now }: CalendarProps): JSX.Element {
           );
         })}
       </div>
-    </div>
   );
 }
 
