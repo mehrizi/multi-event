@@ -9,6 +9,8 @@ $insidenessFactor: .9;
 
 .multi-event {
     font-size: $default-font-size;
+    container-type: size;
+    container-name: multievent;
 
     @media (min-width: 768px) {
         font-size: $default-font-size *1.5;
@@ -48,8 +50,10 @@ $insidenessFactor: .9;
             font-size: 5cqw;
             cursor: pointer;
             transition: all 0.4s;
+            box-sizing: border-box;
 
             &:after {
+                box-sizing: border-box;
                 top: 0;
                 left: 0;
                 width: 100%;
@@ -67,7 +71,7 @@ $insidenessFactor: .9;
             }
 
             &.today:after {
-                border-color: #208b3a;
+                border: 1cqw solid rgba(113, 156, 250, 0.4);
             }
 
             &.selected:after {
@@ -170,7 +174,7 @@ $insidenessFactor: .9;
                     display: block;
                     //transform: translateY(-1*$hw) translateX(-1*$hw);
                     z-index: 5;
-                    padding: 0 5px 0 0;
+                    padding: 1px 5px 1px 0;
                     text-indent: 10px;
                     line-height: $h;
 
@@ -226,6 +230,38 @@ $insidenessFactor: .9;
                 }
             }
 
+        }
+
+    }
+
+    .me-yearbar {
+        position: relative;
+        button {
+            border: none;
+            background: none;
+            position: absolute;
+            top:0;
+            font-size: 12cqw;
+        }
+        >span{
+            display: block;
+            text-align: center;
+            font-size: 9cqw;
+            
+        }
+
+        .me-next-button {
+            right:0;
+        }
+        .me-prev-button {
+            left:0;
+        }
+    }
+
+    &.rtl{
+        direction: rtl;
+        .me-day {
+            float: right;
         }
 
     }

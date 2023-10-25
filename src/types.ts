@@ -5,6 +5,7 @@ export interface CalendarProps {
     events?: Event[];
     now?: DateTime
     config?: MultiEventConfig
+    today?:DateTime
 
 }
 
@@ -16,41 +17,31 @@ export interface Event {
 
 export interface YearBarProps {
     now?: DateTime;
+    setNow?: Function;
 }
-
+type calendarType = 'buddhist'
+    | 'chinese'
+    | 'coptic'
+    | 'ethiopiac'
+    | 'ethiopic'
+    | 'hebrew'
+    | 'indian'
+    | 'islamic'
+    | 'islamicc'
+    | 'iso8601'
+    | 'japanese'
+    | 'persian'
+    | 'roc';
 export interface MultiEventProps {
     children: ReactNode;
     events: Event[];
     config?: MultiEventConfig;
-    calendar?: 'buddhist'
-    | 'chinese'
-    | 'coptic'
-    | 'ethiopiac'
-    | 'ethiopic'
-    | 'hebrew'
-    | 'indian'
-    | 'islamic'
-    | 'islamicc'
-    | 'iso8601'
-    | 'japanese'
-    | 'persian'
-    | 'roc'
+    calendar?:calendarType
+    today?:DateTime
 }
 
 export interface MultiEventConfig {
-    calendar?: 'buddhist'
-    | 'chinese'
-    | 'coptic'
-    | 'ethiopiac'
-    | 'ethiopic'
-    | 'hebrew'
-    | 'indian'
-    | 'islamic'
-    | 'islamicc'
-    | 'iso8601'
-    | 'japanese'
-    | 'persian'
-    | 'roc'
     weekends: number[]
+    rtl: boolean
 
 }

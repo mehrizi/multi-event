@@ -5,6 +5,7 @@ import Calendar from "./Calendar";
 import { DateTime } from "luxon";
 import { EventFactory } from "../Helpers/EventFactory";
 import {  MultiEventProps } from "../../types";
+import YearBar from "./YearBar";
 
 // Doing event generation
 let events: Event[] = [];
@@ -24,6 +25,7 @@ const meta: Meta<typeof MultiEvent> = {
   render: (args) => (
     <div style={{maxWidth:args.maxWidth,margin:"0 auto 0 auto"}}>
     <MultiEvent {...args} events={events} config={{}}>
+      <YearBar />
       <Calendar />
     </MultiEvent>
 
@@ -53,7 +55,12 @@ const meta: Meta<typeof MultiEvent> = {
       , 320
       , 260
 ]
-    }
+    },
+    config: {
+      control: {
+        type: 'object',
+      },
+    },
   },
 };
 
@@ -70,7 +77,11 @@ type Story = StoryObj<typeof meta>;
 // }
 export const Primary = {
   args:{
-    calendar:"persian",
-    maxWidth:320
+    calendar:"iso8601",
+    maxWidth:320,
+    config:{
+      weekends: [6, 7],
+      rtl: true
+    }
   } 
 }
