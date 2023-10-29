@@ -263,7 +263,19 @@ $insidenessFactor: .9;
         .me-day {
             float: right;
         }
-
+        .me-yearbar {
+               
+            .me-next-button {
+                left:0;
+                right:auto;
+            }
+            .me-prev-button {
+                right:0;
+                left:auto;
+            }
+        }
+    
+    
     }
 
 }

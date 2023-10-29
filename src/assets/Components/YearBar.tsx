@@ -15,7 +15,7 @@ function YearBar({ now ,setNow}: YearBarProps): JSX.Element {
   return (
     <div className='me-yearbar'>
       <button className='me-prev-button' onClick={prevMonth}>{"<"}</button>
-      <span>{now?.toFormat("MMM")}</span>
+      <span>{now?.toFormat("MMMM yyyy")}</span>
       <button className='me-next-button' onClick={nextMonth}>{">"}</button>
     </div>
   );

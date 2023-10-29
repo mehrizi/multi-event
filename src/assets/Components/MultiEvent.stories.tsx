@@ -24,7 +24,7 @@ const meta: Meta<typeof MultiEvent> = {
   component: MultiEvent,
   render: (args) => (
     <div style={{maxWidth:args.maxWidth,margin:"0 auto 0 auto"}}>
-    <MultiEvent {...args} events={events} config={{}}>
+    <MultiEvent {...args} events={events} >
       <YearBar />
       <Calendar />
     </MultiEvent>
@@ -81,7 +81,8 @@ export const Primary = {
     maxWidth:320,
     config:{
       weekends: [6, 7],
-      rtl: true
+      rtl: true,
+      weekstart: 1
     }
   } 
 }

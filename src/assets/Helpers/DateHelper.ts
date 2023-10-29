@@ -9,7 +9,7 @@ export class DateHelper {
     return start;
   }
   static monthEnd(time: DateTime): DateTime {
-    let start = DateHelper.monthStart(time);
+    let start = time.plus({days:0});
     const month = time.toFormat("M");
     let end: DateTime = null
     while (!end) {
@@ -20,16 +20,22 @@ export class DateHelper {
     return end
   }
 
-  static weekStart(time: DateTime): DateTime {
-    const weekday = time.toFormat("c");
-    const toDecrease = weekday - 1;
-    console.log(time,weekday);
-    return time.plus({days:-1*toDecrease});
+  static weekStart(time: DateTime, weekStart:number): DateTime {
+    let nowTime = time.plus({days:0});
+    while(nowTime.toFormat("c")*1 != weekStart)
+    {
+      nowTime = nowTime.plus({days:-1});
+    }
+    return nowTime;
   }
-  static weekEnd(time: DateTime): DateTime {
-    const weekday = time.toFormat("c");
-    const toIncrease = 7 - weekday ;
-    return time.plus({days:toIncrease});
+  static weekEnd(time: DateTime, weekStart:number): DateTime {
+    const weekEndDay = weekStart==1?7:weekStart-1;
+    let nowTime = time.plus({days:0});
+    while(nowTime.toFormat("c")*1 != weekEndDay)
+    {
+      nowTime = nowTime.plus({days:1});
+    }
+    return nowTime;
 
   }
 

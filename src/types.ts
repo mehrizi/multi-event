@@ -6,7 +6,7 @@ export interface CalendarProps {
     now?: DateTime
     config?: MultiEventConfig
     today?:DateTime
-
+    weekStart?: number
 }
 
 export interface Event {
@@ -38,10 +38,11 @@ export interface MultiEventProps {
     config?: MultiEventConfig;
     calendar?:calendarType
     today?:DateTime
+    weekStart?: number
 }
 
 export interface MultiEventConfig {
     weekends: number[]
     rtl: boolean
-
+    weekstart: number
 }
