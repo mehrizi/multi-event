@@ -1,5 +1,5 @@
 import { Event } from "../../types";
-import DateTime from "luxon";
+import {DateTime} from "luxon";
 
 export class EventFactory {
   // Define the default options

@@ -1,23 +1,26 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import YearBar from "./YearBar";
 import Calendar from "./Calendar";
 import { DateTime } from "luxon";
 import "./MultiEvent.scss";
 
-import { YearBarProps, CalendarProps, MultiEventConfig } from "../../types";
+import { YearBarProps, CalendarProps, MultiEventConfig,MultiEventProps } from "../../types";
 import { EventFactory } from "../Helpers/EventFactory";
-function MultiEvent({
+
+export const DefaultConfig: MultiEventConfig = {
+  weekends: [6, 7],
+  rtl: false,
+  weekstart: 1,
+};
+
+export const MultiEvent = ({
   children,
   events,
   calendar = "persian",
-  config = {},
+  config,
   today = DateTime.now(),
-}: MultiEventProps): JSX.Element {
-  const defaultConfig: MultiEventConfig = {
-    weekends: [6, 7],
-    rtl: false,
-    weekstart: 1,
-  };
+}: MultiEventProps): JSX.Element=> {
+  
   const [now, setNow] = useState(
     DateTime.now().reconfigure({ outputCalendar: calendar })
   );
@@ -43,10 +46,10 @@ function MultiEvent({
     );
   }, [events]);
 
-  const [meConfig, setMeConfig] = useState({ ...defaultConfig, ...config });
+  const [meConfig, setMeConfig] = useState({ ...DefaultConfig, ...config });
   useEffect(() => {
     console.log("config Changed");
-    setMeConfig({ ...defaultConfig, ...config });
+    setMeConfig({ ...DefaultConfig, ...config });
   }, [config]);
 
   today = today.reconfigure({ outputCalendar: meCalendar });

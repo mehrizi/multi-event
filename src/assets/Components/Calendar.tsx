@@ -1,21 +1,22 @@
-import React from "react";
-import { Event, CalendarProps } from "../../types";
+import { CalendarProps } from "../../types";
 import { DateHelper } from "../Helpers/DateHelper";
 import { DateTime } from "luxon";
+import { DefaultConfig } from "./MultiEvent";
 
-function Calendar({
-  config,
-  events,
-  now,
-  today = DateTime.now(),
-  weekStart = 1,
-}: CalendarProps): JSX.Element {
+export const Calendar = (props: CalendarProps): JSX.Element => {
+  // props casting to local variable
+  // This is very important as we need all props to be nullable in calling the Calendar inside multievent
+  const now = props.now ?? DateTime.now();
+  const config = { ...DefaultConfig, ...props.config };
+  const events = props.events??[];
+  const weekStart = props.weekStart??DefaultConfig.weekstart;
+  const today = props.today??DateTime.now();
+
+  // Now calculate the calendar boundaries
   const monthStart = DateHelper.monthStart(now);
   const monthEnd = DateHelper.monthEnd(now);
-  const calendarStart = DateHelper.weekStart(monthStart,weekStart);
-  const calendarEnd = DateHelper.weekEnd(monthEnd,weekStart);
-  console.log("Month End",monthEnd.toFormat("M d"));
-  console.log("Cal End",calendarEnd.toFormat("M d"));
+  const calendarStart = DateHelper.weekStart(monthStart, weekStart);
+  const calendarEnd = DateHelper.weekEnd(monthEnd, weekStart);
   let calendarNow = calendarStart.plus({ days: 0 });
   const days = [];
   while (calendarNow.toMillis() <= calendarEnd.toMillis()) {
@@ -23,8 +24,8 @@ function Calendar({
     calendarNow = calendarNow.plus({ days: 1 });
   }
 
-  const getDayEvents = (day: luxon) => {
-    return events?.filter((event) => {
+  const getDayEvents = (day: DateTime) => {
+    return events.filter((event) => {
       return event.time.toFormat("yyyy-MM-dd") == day.toFormat("yyyy-MM-dd");
     });
   };
@@ -33,7 +34,7 @@ function Calendar({
       {days.map((day, i) => {
         if (i >= 7) return <span />;
         let classes = "me-day day-name";
-        if (config?.weekends.indexOf(1 * day.toFormat("c")) > -1)
+        if (config.weekends.indexOf(parseInt(day.toFormat("c"))) > -1)
           classes += " weekend";
         return (
           <div className={classes} key={i}>
@@ -42,10 +43,10 @@ function Calendar({
         );
       })}
       {days.map((day, i) => {
-        let dayEvents = getDayEvents(day);
+        const dayEvents = getDayEvents(day);
         let classes = "me-day";
         if (day.toFormat("d") == "1") classes += " month-first-day";
-        if (config?.weekends.indexOf(1 * day.toFormat("c")) > -1)
+        if (config?.weekends.indexOf(parseInt(day.toFormat("c"))) > -1)
           classes += " weekend";
         if (today.toFormat("yyyy M dd") == day.toFormat("yyyy M dd"))
           classes += " today";
@@ -73,6 +74,6 @@ function Calendar({
       })}
     </div>
   );
-}
+};
 
 export default Calendar;
