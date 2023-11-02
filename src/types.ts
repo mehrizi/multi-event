@@ -38,7 +38,6 @@ export interface MultiEventProps {
     config?: MultiEventConfig;
     calendar?:calendarType
     today?:DateTime
-    weekStart?: number
 }
 
 export interface MultiEventConfig {

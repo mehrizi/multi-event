@@ -17,7 +17,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve('src', 'assets/Component/index.ts'),
+      entry: resolve('src', 'assets/Components/index.ts'),
       name: 'MultiEvent',
       formats: ['es', 'umd'],
       fileName: (format) => `multi-event-library.${format}.js`,

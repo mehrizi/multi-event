@@ -33,25 +33,20 @@ const meta: Meta<typeof MultiEvent> = {
   argTypes: {
     calendar: {
       control: "select",
-      options: [
-        "buddhist",
-        "chinese",
-        "coptic",
-        "ethiopiac",
-        "ethiopic",
-        "hebrew",
-        "indian",
-        "islamic",
-        "islamicc",
-        "iso8601",
-        "japanese",
-        "persian",
-        "roc",
-      ],
     },
     config: {
       control: {
         type: "object",
+      },
+    },
+    events:{
+      table: {
+        disable: true,
+      },
+    },
+    today:{
+      table: {
+        disable: true,
       },
     },
   },
@@ -103,7 +98,7 @@ export const Primary = {
     calendar: "iso8601",
     config: {
       weekends: [6, 7],
-      rtl: true,
+      rtl: false,
       weekstart: 1,
     },
   },
