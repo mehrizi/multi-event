@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { MultiEvent } from "./MultiEvent";
+import { MultiEvent,Event } from "./MultiEvent";
 import { Calendar } from "./Calendar";
 import { DateTime } from "luxon";
 import { EventFactory } from "../Helpers/EventFactory";
 import { YearBar } from "./YearBar";
-import { Event } from "../../types";
 
 // Viewports
 // Doing event generation

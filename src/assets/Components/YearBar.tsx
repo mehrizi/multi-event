@@ -1,6 +1,10 @@
 import { DateTime } from "luxon";
-import { YearBarProps } from "../../types";
 import { DateHelper } from "../Helpers/DateHelper";
+export interface YearBarProps {
+  now?: DateTime;
+  setNow?: Function;
+}
+
 
 export const YearBar = (props: YearBarProps): JSX.Element => {
   const setNow =

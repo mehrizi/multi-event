@@ -1,4 +1,4 @@
-import { Event } from "../../types";
+import { Event } from "../Components/MultiEvent";
 import {DateTime} from "luxon";
 
 export class EventFactory {

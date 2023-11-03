@@ -1,17 +1,50 @@
-import React, {  useEffect, useState } from "react";
-import YearBar from "./YearBar";
-import Calendar from "./Calendar";
+import React, {  useEffect, useState,ReactNode } from "react";
+import YearBar,{YearBarProps} from "./YearBar";
+import {Calendar,CalendarProps} from "./Calendar";
 import { DateTime } from "luxon";
 import "./MultiEvent.scss";
 
-import { YearBarProps, CalendarProps, MultiEventConfig,MultiEventProps } from "../../types";
 import { EventFactory } from "../Helpers/EventFactory";
+
+export interface Event {
+  time: DateTime;
+  title: string;
+  color: string;
+}
 
 export const DefaultConfig: MultiEventConfig = {
   weekends: [6, 7],
   rtl: false,
   weekstart: 1,
 };
+
+export type calendarType = 'buddhist'
+    | 'chinese'
+    | 'coptic'
+    | 'ethiopiac'
+    | 'ethiopic'
+    | 'hebrew'
+    | 'indian'
+    | 'islamic'
+    | 'islamicc'
+    | 'iso8601'
+    | 'japanese'
+    | 'persian'
+    | 'roc';
+export interface MultiEventProps {
+    children: ReactNode;
+    events: Event[];
+    config?: MultiEventConfig;
+    calendar?:calendarType
+    today?:DateTime
+}
+
+export interface MultiEventConfig {
+    weekends: number[]
+    rtl: boolean
+    weekstart: number
+}
+
 
 export const MultiEvent = ({
   children,

@@ -1,7 +1,15 @@
-import { CalendarProps } from "../../types";
 import { DateHelper } from "../Helpers/DateHelper";
 import { DateTime } from "luxon";
 import { DefaultConfig } from "./MultiEvent";
+import { MultiEventConfig,Event } from "./MultiEvent";
+
+export interface CalendarProps {
+  events?: Event[];
+  now?: DateTime
+  config?: MultiEventConfig
+  today?:DateTime
+  weekStart?: number
+}
 
 export const Calendar = (props: CalendarProps): JSX.Element => {
   // props casting to local variable

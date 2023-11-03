@@ -1,5 +1,4 @@
-import { MultiEvent } from "./assets/Components/MultiEvent";
-import { Event } from "./types";
+import { MultiEvent,Event } from "./assets/Components/MultiEvent";
 import { DateTime } from "luxon";
 import { EventFactory } from "./assets/Helpers/EventFactory";
 import { Calendar } from "./assets/Components/Calendar";
