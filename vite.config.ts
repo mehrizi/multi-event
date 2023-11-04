@@ -8,8 +8,9 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   plugins: [react(),
     dts({
-      include: ['src/assets/Components/'],
-    })],
+      include: ['src/Components'],
+    })
+  ],
   css: {
     preprocessorOptions: {
       scss: {},
@@ -17,7 +18,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve('src', 'assets/Components/index.ts'),
+      entry: resolve('src', 'Components/index.ts'),
       name: 'MultiEvent',
       formats: ['es', 'umd'],
       fileName: (format) => `multi-event.${format}.js`,

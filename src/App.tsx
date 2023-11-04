@@ -1,8 +1,8 @@
-import { MultiEvent,Event } from "./assets/Components/MultiEvent";
+import { MultiEvent,Event } from "./Components/MultiEvent";
 import { DateTime } from "luxon";
-import { EventFactory } from "./assets/Helpers/EventFactory";
-import { Calendar } from "./assets/Components/Calendar";
-import { YearBar } from "./assets/Components/YearBar";
+import { EventFactory } from "./Helpers/EventFactory";
+import { Calendar } from "./Components/Calendar";
+import { YearBar } from "./Components/YearBar";
 function App() {
   let events: Event[] = [];
   let dateNow: DateTime = DateTime.now().set({ day: 1 });

@@ -2,7 +2,7 @@
   "name": "multi-event-calendar",
   "homepage": "https://mehrizi.github.io/multi-event",
   "private": false,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "keywords": [
     "react",
@@ -24,9 +24,15 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/multi-event.es.js",
-      "require": "./dist/multi-event.umd.js"
-    },
+      "import": {
+        "default":"./dist/multi-event.es.js",
+        "types":"./dist/Components/index.d.ts"
+      },
+      "require": {
+        "default":"./dist/multi-event.umd.js",
+        "types":"./dist/Components/index.d.ts"
+      }
+   },
     "./dist/style.css": "./dist/style.css"
   },
   "main": "./dist/multi-event.umd.js",
@@ -41,15 +47,13 @@
     "storybook:build": "storybook build",
     "storybook:deploy": "echo. > ./storybook-static/.nojekyll && gh-pages -d ./storybook-static -t true"
   },
-  "dependencies": {
-    "luxon": "^3.4.3",
-    "yarn": "^1.22.19"
-  },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "luxon": "^3.4.3"
   },
   "devDependencies": {
+    "yarn": "^1.22.19",
     "@storybook/addon-essentials": "7.5.1",
     "@storybook/addon-interactions": "7.5.1",
     "@storybook/addon-links": "7.5.1",

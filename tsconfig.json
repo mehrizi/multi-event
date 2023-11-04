@@ -20,11 +20,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "multi-event-library": [ "./src/assets/Components/index.ts" ]
+      "multi-event-library": [ "./src/Components/index.ts" ]
     },
     "typeRoots": [
       "node_modules/@types",
-      "src/assets/Components/index.ts"
+      "src/Components/index.ts"
     ]
   },
   "include": ["src"],
