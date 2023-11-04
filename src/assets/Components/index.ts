@@ -4,4 +4,4 @@ export { Calendar } from './Calendar.tsx';
 export type {CalendarProps} from './Calendar.tsx'
 export { YearBar } from './YearBar.tsx';
 export type { YearBarProps } from './YearBar.tsx';
-
+import './MultiEvent.scss'

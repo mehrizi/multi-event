@@ -20,10 +20,15 @@ export default defineConfig({
       entry: resolve('src', 'assets/Components/index.ts'),
       name: 'MultiEvent',
       formats: ['es', 'umd'],
-      fileName: (format) => `multi-event-library.${format}.js`,
+      fileName: (format) => `multi-event.${format}.js`,
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
+      output: {
+        globals: {
+          react: 'React'
+        }
+      }
     }
   }
 })

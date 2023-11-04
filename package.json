@@ -1,8 +1,8 @@
 {
-  "name": "multi-event",
+  "name": "multi-event-calendar",
   "homepage": "https://mehrizi.github.io/multi-event",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "keywords": [
     "react",
@@ -19,12 +19,19 @@
   "bugs": {
     "url": "https://github.com/mehrizi/multi-event/issues"
   },
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
   "files": [
-    "/dist"
+    "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/multi-event.es.js",
+      "require": "./dist/multi-event.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "main": "./dist/multi-event.umd.js",
+  "module": "./dist/multi-event.es.js",
+  "types": "./dist/Components/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
