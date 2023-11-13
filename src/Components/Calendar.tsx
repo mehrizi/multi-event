@@ -9,11 +9,13 @@ export interface CalendarProps {
   config?: MultiEventConfig
   today?:DateTime
   weekStart?: number
+  locale?: string
 }
 
 export const Calendar = (props: CalendarProps): JSX.Element => {
   // props casting to local variable
   // This is very important as we need all props to be nullable in calling the Calendar inside multievent
+  const locale = props.locale ?? 'en';
   const now = props.now ?? DateTime.now();
   const config = { ...DefaultConfig, ...props.config };
   const events = props.events??[];
@@ -34,7 +36,7 @@ export const Calendar = (props: CalendarProps): JSX.Element => {
 
   const getDayEvents = (day: DateTime) => {
     return events.filter((event) => {
-      return event.time.toFormat("yyyy-MM-dd") == day.toFormat("yyyy-MM-dd");
+      return event.time.setLocale(locale).toFormat("yyyy-MM-dd") == day.toFormat("yyyy-MM-dd");
     });
   };
   return (
