@@ -23,6 +23,7 @@ function App() {
           <YearBar />
           <Calendar />
         </MultiEvent>
+        Hello
       </div>
     </>
   );

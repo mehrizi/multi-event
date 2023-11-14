@@ -39,8 +39,7 @@ export const Calendar = (props: CalendarProps): JSX.Element => {
   };
   return (
     <div className="me-calendar">
-      {days.map((day, i) => {
-        if (i >= 7) return <span />;
+      {days.filter((dy,ind)=>ind<7).map((day, i) => {
         let classes = "me-day day-name";
         if (config.weekends.indexOf(parseInt(day.toFormat("c"))) > -1)
           classes += " weekend";
@@ -62,8 +61,8 @@ export const Calendar = (props: CalendarProps): JSX.Element => {
           <div className={classes} key={i}>
             <span>{day.toFormat("d")}</span>
             <div className="me-events-container">
-              {dayEvents.map((event) => (
-                <div className="me-event">
+              {dayEvents.map((event:Event,ii) => (
+                <div key={ii} className="me-event">
                   <i
                     className="dot"
                     style={{ background: event.color ?? "#00F" }}

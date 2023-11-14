@@ -1,0 +1,35 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as CalendarStory from './MultiEvent.stories.tsx';
+
+<Meta of={CalendarStory} />
+
+# Multi Event Calendar
+
+This is a simple React calendar component (with **monthly** view only) that is suitable to display multiple events per day.
+
+For a live demo visit [mehrizi.github.io/multi-event](https://mehrizi.github.io/multi-event)
+
+## key features:
+
++ Multi calendar system support
++ RTL support
++ Weekends are configurable
++ Week start is configurable
+
+## Installation
+### Peer dependencies:
+- React (I assume you already have react installed to use a React component!)
+- Luxon which we use as date adapter: `npm i luxon --save`
+
+### Install the package
+To install the package via npm simply run the following in root of your project: <br/>
+`npm i multi-event-calendar --save`
+
+
+
+### How to use
+
+<Canvas of={CalendarStory.Primary} layout='padded' />

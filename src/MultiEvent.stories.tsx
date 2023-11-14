@@ -23,6 +23,7 @@ while (dateNow.toFormat("dd") <= dateEnd.toFormat("dd")) {
 const meta: Meta<typeof MultiEvent> = {
   title: "Multi Event Calendar",
   component: MultiEvent,
+  // tags: ['autodocs'],
   render: (args) => (
     <MultiEvent {...args} events={events}>
       <YearBar />

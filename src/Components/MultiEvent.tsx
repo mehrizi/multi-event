@@ -49,7 +49,7 @@ export interface MultiEventConfig {
 export const MultiEvent = ({
   children,
   events,
-  calendar = "persian",
+  calendar = "iso8601",
   config,
   today = DateTime.now(),
 }: MultiEventProps): JSX.Element=> {

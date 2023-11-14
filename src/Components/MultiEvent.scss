@@ -9,16 +9,16 @@ $insidenessFactor: .9;
 
 .multi-event {
     font-size: $default-font-size;
-    container-type: size;
+    container-type: inline-size;
     container-name: multievent;
 
-    @media (min-width: 768px) {
-        font-size: $default-font-size *1.5;
-    }
+    // @media (min-width: 768px) {
+    //     font-size: $default-font-size *1.5;
+    // }
 
-    @media (min-width: 1024px) {
-        font-size: $default-font-size *2;
-    }
+    // @media (min-width: 1024px) {
+    //     font-size: $default-font-size *2;
+    // }
 
     @media (min-width: 1440px) {
         font-size: $default-font-size *2.5;
@@ -27,16 +27,21 @@ $insidenessFactor: .9;
     display: block;
     font-family: roboto;
 
-    .me-calendar::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
 
     .me-calendar {
-        container-type: size;
+        container-type: inline-size;
         container-name: mecalendar;
 
+        &:after {
+            content: " ";
+            clear: both;
+            display: table;
+        }
+        &:before {
+            content: " ";
+            clear: both;
+            display: table;
+        }
         .me-day {
             width: $cellWidth - $spacing;
             padding-top: $cellWidth - $spacing;
