@@ -84,16 +84,7 @@ export const Bounded = {
   },
   parameters: {
     viewport: {
-      viewports: {
-        xlarge: {
-          name: "xlarge (780px wide)",
-          styles: {
-            width: "780px",
-            height: "480px",
-          },
-        },
-      },
-      defaultViewport: "xlarge",
+      defaultViewport: "large",
     },
   },
   render: (args) => {
