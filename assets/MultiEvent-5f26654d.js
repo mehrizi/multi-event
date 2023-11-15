@@ -1,4 +1,4 @@
-import{j as e,C as s,B as a}from"./MultiEvent.stories-5139bf91.js";import{M as l,C as o}from"./index-de82169d.js";import{u as i}from"./index-dc1d5b46.js";import"./index-c013ead5.js";import"./_commonjsHelpers-725317a4.js";import"./iframe-51aaaac5.js";import"../sb-preview/runtime.js";import"./index-772e0a79.js";import"./index-d37d4223.js";import"./index-356e4a49.js";function r(t){const n=Object.assign({h1:"h1",p:"p",strong:"strong",a:"a",h2:"h2",ul:"ul",li:"li",h3:"h3",code:"code",pre:"pre"},i(),t.components);return e.jsxs(e.Fragment,{children:[e.jsx(l,{of:s}),`
+import{j as e,C as s,B as a}from"./MultiEvent.stories-722cbfa3.js";import{M as l,C as o}from"./index-3f50d83d.js";import{u as i}from"./index-dc1d5b46.js";import"./index-c013ead5.js";import"./_commonjsHelpers-725317a4.js";import"./iframe-525fcaf4.js";import"../sb-preview/runtime.js";import"./index-772e0a79.js";import"./index-d37d4223.js";import"./index-356e4a49.js";function r(t){const n=Object.assign({h1:"h1",p:"p",strong:"strong",a:"a",h2:"h2",ul:"ul",li:"li",h3:"h3",code:"code",pre:"pre"},i(),t.components);return e.jsxs(e.Fragment,{children:[e.jsx(l,{of:s}),`
 `,e.jsx(n.h1,{id:"multi-event-calendar",children:"Multi Event Calendar"}),`
 `,e.jsxs(n.p,{children:["This is a simple React calendar component (with ",e.jsx(n.strong,{children:"monthly"})," view only) that is suitable to display multiple events per day."]}),`
 `,e.jsxs(n.p,{children:["For a live demo visit ",e.jsx(n.a,{href:"https://mehrizi.github.io/multi-event",target:"_blank",rel:"nofollow noopener noreferrer",children:"mehrizi.github.io/multi-event"})]}),`
@@ -38,4 +38,4 @@ let events =[{\r
     <Calendar />\r
 </MultiEvent>
 `})})]})}function f(t={}){const{wrapper:n}=Object.assign({},i(),t.components);return n?e.jsx(n,Object.assign({},t,{children:e.jsx(r,t)})):r(t)}export{f as default};
-//# sourceMappingURL=MultiEvent-c8aec34e.js.map
+//# sourceMappingURL=MultiEvent-5f26654d.js.map
