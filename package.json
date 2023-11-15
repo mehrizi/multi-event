@@ -2,7 +2,7 @@
   "name": "multi-event-calendar",
   "homepage": "https://mehrizi.github.io/multi-event",
   "private": false,
-  "version": "0.1.2",
+  "version": "0.3.0",
   "type": "module",
   "keywords": [
     "react",
