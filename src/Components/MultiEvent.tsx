@@ -45,7 +45,6 @@ export interface MultiEventConfig {
     weekstart: number
 }
 
-
 export const MultiEvent = ({
   children,
   events,

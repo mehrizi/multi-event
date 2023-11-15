@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { MultiEvent,Event } from "./Components/MultiEvent";
+import { MultiEvent, Event } from "./Components/MultiEvent";
 import { Calendar } from "./Components/Calendar";
 import { DateTime } from "luxon";
 import { EventFactory } from "./Helpers/EventFactory";
@@ -23,13 +23,6 @@ while (dateNow.toFormat("dd") <= dateEnd.toFormat("dd")) {
 const meta: Meta<typeof MultiEvent> = {
   title: "Multi Event Calendar",
   component: MultiEvent,
-  // tags: ['autodocs'],
-  render: (args) => (
-    <MultiEvent {...args} events={events}>
-      <YearBar />
-      <Calendar />
-    </MultiEvent>
-  ),
   argTypes: {
     calendar: {
       control: "select",
@@ -39,12 +32,12 @@ const meta: Meta<typeof MultiEvent> = {
         type: "object",
       },
     },
-    events:{
+    events: {
       table: {
         disable: true,
       },
     },
-    today:{
+    today: {
       table: {
         disable: true,
       },
@@ -53,37 +46,6 @@ const meta: Meta<typeof MultiEvent> = {
 };
 
 export default meta;
-const VIEWPORTS = {
-  large:{
-    name: "large (780px wide)",
-    styles: {
-      width: "780px",
-      height: "980px",
-    },
-  },
-  medium:{
-    name: "medium (560px wide)",
-    styles: {
-      width: "560px",
-      height: "690px",
-    },
-  },
-  small:{
-    name: "small (320px wide)",
-    styles: {
-      width: "320px",
-      height: "400px",
-    },
-  },
-  xsmall:{
-    name: "xsmall (260px wide)",
-    styles: {
-      width: "260px",
-      height: "330px",
-    },
-  },
-};
-
 type Story = StoryObj<typeof meta>;
 
 // export function Primary(args: MultiEventProps) {
@@ -102,7 +64,48 @@ export const Primary = {
       weekstart: 1,
     },
   },
+  render: (args) => (
+    <MultiEvent {...args} events={events}>
+      <YearBar />
+      <Calendar />
+    </MultiEvent>
+  ),
+} satisfies Story;
+
+/** Hi */
+export const Bounded = {
+  args: {
+    calendar: "iso8601",
+    config: {
+      weekends: [6, 7],
+      rtl: false,
+      weekstart: 1,
+    },
+  },
   parameters: {
-    viewport: { viewports: VIEWPORTS, defaultViewport: "small" },
+    viewport: {
+      viewports: {
+        xlarge: {
+          name: "xlarge (780px wide)",
+          styles: {
+            width: "780px",
+            height: "480px",
+          },
+        },
+      },
+      defaultViewport: "xlarge",
+    },
+  },
+  render: (args) => {
+    return (
+      <div style={{maxWidth:300,margin:'auto'}}>
+      <MultiEvent {...args} events={events}>
+        <YearBar />
+        <Calendar />
+      </MultiEvent>
+
+      </div>
+
+    );
   },
 } satisfies Story;
