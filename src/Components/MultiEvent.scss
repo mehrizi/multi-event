@@ -11,22 +11,8 @@ $insidenessFactor: .9;
     font-size: $default-font-size;
     container-type: inline-size;
     container-name: multievent;
-
-    // @media (min-width: 768px) {
-    //     font-size: $default-font-size *1.5;
-    // }
-
-    // @media (min-width: 1024px) {
-    //     font-size: $default-font-size *2;
-    // }
-
-    @media (min-width: 1440px) {
-        font-size: $default-font-size *2.5;
-    }
-
     display: block;
     font-family: roboto;
-
 
     .me-calendar {
         container-type: inline-size;
@@ -37,11 +23,13 @@ $insidenessFactor: .9;
             clear: both;
             display: table;
         }
+
         &:before {
             content: " ";
             clear: both;
             display: table;
         }
+
         .me-day {
             width: $cellWidth - $spacing;
             padding-top: $cellWidth - $spacing;
@@ -241,46 +229,89 @@ $insidenessFactor: .9;
 
     .me-yearbar {
         position: relative;
+
         button {
             border: none;
+            width: 12%;
+            padding: 12% 0 0 0;
             background: none;
             position: absolute;
-            top:0;
-            font-size: 12cqw;
+            top: -7%;
+            font-weight: normal;
+            border-radius: 50%;
+            font-size: 0;
+            color: rgba(0, 0, 0, 0);
+            cursor: pointer;
+            transition: all .5s;
+
+            &:hover {
+                background-color: rgba(100, 100, 100, .5);
+                &:after{
+                    transition: all .5s;
+                    color: white;
+                }
+                
+            }
+
+            &:after {
+                top: 0;
+                left: 25%;
+                font-size: 8cqw;
+                color: rgba(0, 0, 0, .5);
+                transform: scaleY(1.6);
+                position: absolute;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+            }
         }
-        >span{
+
+        >span {
             display: block;
             text-align: center;
             font-size: 9cqw;
-            
+
         }
 
         .me-next-button {
-            right:0;
+            right: 0;
+
+            &:after {
+                content: ">";
+            }
+
         }
+
         .me-prev-button {
-            left:0;
+            left: 0;
+
+            &:after {
+                content: "<";
+                left: 20%;
+            }
         }
     }
 
-    &.rtl{
+    &.rtl {
         direction: rtl;
+
         .me-day {
             float: right;
         }
+
         .me-yearbar {
-               
+
             .me-next-button {
-                left:0;
-                right:auto;
+                left: 0;
+                right: auto;
             }
+
             .me-prev-button {
-                right:0;
-                left:auto;
+                right: 0;
+                left: auto;
             }
         }
-    
-    
+
+
     }
 
 }
