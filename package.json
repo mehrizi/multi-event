@@ -2,7 +2,7 @@
   "name": "multi-event-calendar",
   "homepage": "https://mehrizi.github.io/multi-event",
   "private": false,
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "keywords": [
     "react",
@@ -25,14 +25,14 @@
   "exports": {
     ".": {
       "import": {
-        "default":"./dist/multi-event.es.js",
-        "types":"./dist/Components/index.d.ts"
+        "default": "./dist/multi-event.es.js",
+        "types": "./dist/Components/index.d.ts"
       },
       "require": {
-        "default":"./dist/multi-event.umd.js",
-        "types":"./dist/Components/index.d.ts"
+        "default": "./dist/multi-event.umd.js",
+        "types": "./dist/Components/index.d.ts"
       }
-   },
+    },
     "./dist/style.css": "./dist/style.css"
   },
   "main": "./dist/multi-event.umd.js",
