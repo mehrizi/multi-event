@@ -5,6 +5,9 @@ import { Calendar } from "./Components/Calendar";
 import { DateTime } from "luxon";
 import { EventFactory } from "./Helpers/EventFactory";
 import { YearBar } from "./Components/YearBar";
+import { within, userEvent } from "@storybook/testing-library";
+
+import { expect } from "@storybook/jest";
 
 // Viewports
 // Doing event generation
@@ -48,13 +51,6 @@ const meta: Meta<typeof MultiEvent> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// export function Primary(args: MultiEventProps) {
-//   return (
-//     <MultiEvent {...args} events={events}>
-//       <Calendar />
-//     </MultiEvent>
-//   );
-// }
 export const Primary = {
   args: {
     calendar: "iso8601",
@@ -72,7 +68,31 @@ export const Primary = {
   ),
 } satisfies Story;
 
-/** Hi */
+export const MonthNavTesting = {
+  ...Primary,
+  play: async ({ args, canvasElement,step }) => {
+    const canvas = within(canvasElement);
+
+    await step("Go to Next month", async () => {
+      await userEvent.click(canvas.getByText(">"));
+      const nextMonthName = DateTime.now()
+        .reconfigure({ outputCalendar: args.calendar ?? "iso8601" })
+        .plus({ months: 1 })
+        .toFormat("MMMM yyyy");
+      await expect(canvas.getByText(nextMonthName)).toBeInTheDocument();
+    });
+
+    await step("Go to Prev month", async () => {
+      await userEvent.click(canvas.getByText("<"));
+      const nextMonthName = DateTime.now()
+        .reconfigure({ outputCalendar: args.calendar ?? "iso8601" })
+        .toFormat("MMMM yyyy");
+      await expect(canvas.getByText(nextMonthName)).toBeInTheDocument();
+    });
+
+  },
+} satisfies Story;
+
 export const Bounded = {
   args: {
     calendar: "iso8601",
@@ -89,14 +109,12 @@ export const Bounded = {
   },
   render: (args) => {
     return (
-      <div style={{maxWidth:300,margin:'auto'}}>
-      <MultiEvent {...args} events={events}>
-        <YearBar />
-        <Calendar />
-      </MultiEvent>
-
+      <div style={{ maxWidth: 300, margin: "auto" }}>
+        <MultiEvent {...args} events={events}>
+          <YearBar />
+          <Calendar />
+        </MultiEvent>
       </div>
-
     );
   },
 } satisfies Story;
