@@ -39,7 +39,7 @@ export const Calendar = (props: CalendarProps): JSX.Element => {
   };
   return (
     <div className="me-calendar">
-      {days.filter((dy,ind)=>ind<7).map((day, i) => {
+      {days.filter((_dy,ind)=>ind<7).map((day, i) => {
         let classes = "me-day day-name";
         if (config.weekends.indexOf(parseInt(day.toFormat("c"))) > -1)
           classes += " weekend";
