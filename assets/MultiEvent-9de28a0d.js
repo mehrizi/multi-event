@@ -1,4 +1,4 @@
-import{j as e,C as s,B as o}from"./MultiEvent.stories-0d324f67.js";import{M as a,C as l}from"./index-a9798d29.js";import{u as i}from"./index-9784c372.js";import"./_baseIsEqual-7a82cde0.js";import"./_commonjsHelpers-de833af9.js";import"./index-356e4a49.js";import"./index-03bbf7d1.js";import"./uniq-17642f77.js";import"./index-d38bc732.js";import"./iframe-ab2940ed.js";import"../sb-preview/runtime.js";import"./index-6b63ef0d.js";import"./index-d37d4223.js";function r(t){const n=Object.assign({h1:"h1",p:"p",strong:"strong",a:"a",h2:"h2",ul:"ul",li:"li",h3:"h3",code:"code",pre:"pre"},i(),t.components);return e.jsxs(e.Fragment,{children:[e.jsx(a,{of:s}),`
+import{j as e,C as s,B as o}from"./MultiEvent.stories-d73ded44.js";import{M as l,C as a}from"./index-2f35dc3a.js";import{u as i}from"./index-9784c372.js";import"./_baseIsEqual-7a82cde0.js";import"./_commonjsHelpers-de833af9.js";import"./index-356e4a49.js";import"./index-03bbf7d1.js";import"./uniq-17642f77.js";import"./index-d38bc732.js";import"./iframe-1af92fec.js";import"../sb-preview/runtime.js";import"./index-6b63ef0d.js";import"./index-d37d4223.js";function r(t){const n=Object.assign({h1:"h1",p:"p",strong:"strong",a:"a",h2:"h2",ul:"ul",li:"li",h3:"h3",code:"code",pre:"pre"},i(),t.components);return e.jsxs(e.Fragment,{children:[e.jsx(l,{of:s}),`
 `,e.jsx(n.h1,{id:"multi-event-calendar",children:"Multi Event Calendar"}),`
 `,e.jsxs(n.p,{children:["This is a simple React calendar component (with ",e.jsx(n.strong,{children:"monthly"})," view only) that is suitable to display multiple events per day."]}),`
 `,e.jsxs(n.p,{children:["For a live demo visit ",e.jsx(n.a,{href:"https://mehrizi.github.io/multi-event",target:"_blank",rel:"nofollow noopener noreferrer",children:"mehrizi.github.io/multi-event"})]}),`
@@ -21,13 +21,14 @@ import{j as e,C as s,B as o}from"./MultiEvent.stories-0d324f67.js";import{M as a
 `,e.jsx(n.h3,{id:"how-to-use",children:"How to use"}),`
 `,e.jsxs(n.p,{children:["It is important to remember that ",e.jsx(n.code,{children:"<MultiEvent>"}),` Component fills the parent width. It adjusts the height acoordingly.\r
 In this example the width is fixed to 300px`]}),`
-`,e.jsx(l,{of:o,Source:!0,layout:"padded"}),`
+`,e.jsx(a,{of:o,Source:!0,layout:"padded"}),`
 `,e.jsx(n.p,{children:"The Following code is simplest way of integrating the calendar"}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-JSX",children:`import { DateTime } from "luxon";\r
 import {MultiEvent,Calendar,YearBar} from 'multi-event-calendar';\r
+import 'multi-event-calendar/dist/style.css'  // Dont forget to include css\r
 \r
 let events =[{\r
-    time: DateTime.now(), // return a luson object\r
+    time: DateTime.now(), // return a luxon object\r
     title: "Some event title", \r
     color: "#cab" //some color hex\r
     // Your event might have other attributes but these 3 are must\r
@@ -38,4 +39,4 @@ let events =[{\r
     <Calendar />\r
 </MultiEvent>
 `})})]})}function w(t={}){const{wrapper:n}=Object.assign({},i(),t.components);return n?e.jsx(n,Object.assign({},t,{children:e.jsx(r,t)})):r(t)}export{w as default};
-//# sourceMappingURL=MultiEvent-425fb6c9.js.map
+//# sourceMappingURL=MultiEvent-9de28a0d.js.map
