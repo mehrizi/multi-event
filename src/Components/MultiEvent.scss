@@ -247,13 +247,13 @@ $insidenessFactor: .9;
             &:hover {
                 background-color: rgba(100, 100, 100, .5);
                 &:after{
-                    transition: all .5s;
                     color: white;
                 }
                 
             }
 
             &:after {
+                transition: all .5s;
                 top: 0;
                 left: 25%;
                 font-size: 8cqw;

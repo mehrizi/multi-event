@@ -38,9 +38,10 @@ After installaction you can simply use it like this:
 ```JSX
 import { DateTime } from "luxon";
 import {MultiEvent,Calendar,YearBar} from 'multi-event-calendar';
+import 'multi-event-calendar/dist/style.css'  // Dont forget to include css
 
 let events =[{
-    time: DateTime.now(), // return a luson object
+    time: DateTime.now(), // return a luxon object
     title: "Some event title", 
     color: "#cab" //some color hex
     // Your event might have other attributes but these 3 are must
