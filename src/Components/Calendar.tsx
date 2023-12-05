@@ -1,14 +1,15 @@
 import { DateHelper } from "../Helpers/DateHelper";
 import { DateTime } from "luxon";
 import { DefaultConfig } from "./MultiEvent";
-import { MultiEventConfig,Event } from "./MultiEvent";
+import { MultiEventConfig, Event } from "./MultiEvent";
+import Day from "./Day";
 
 export interface CalendarProps {
   events?: Event[];
-  now?: DateTime
-  config?: MultiEventConfig
-  today?:DateTime
-  weekStart?: number
+  now?: DateTime;
+  config?: MultiEventConfig;
+  today?: DateTime;
+  weekStart?: number;
 }
 
 export const Calendar = (props: CalendarProps): JSX.Element => {
@@ -16,9 +17,9 @@ export const Calendar = (props: CalendarProps): JSX.Element => {
   // This is very important as we need all props to be nullable in calling the Calendar inside multievent
   const now = props.now ?? DateTime.now();
   const config = { ...DefaultConfig, ...props.config };
-  const events = props.events??[];
-  const weekStart = props.weekStart??DefaultConfig.weekstart;
-  const today = props.today??DateTime.now();
+  const events = props.events ?? [];
+  const weekStart = props.weekStart ?? DefaultConfig.weekstart;
+  const today = props.today ?? DateTime.now();
 
   // Now calculate the calendar boundaries
   const monthStart = DateHelper.monthStart(now);
@@ -39,44 +40,28 @@ export const Calendar = (props: CalendarProps): JSX.Element => {
   };
   return (
     <div className="me-calendar">
-      {days.filter((_dy,ind)=>ind<7).map((day, i) => {
-        let classes = "me-day day-name";
-        if (config.weekends.indexOf(parseInt(day.toFormat("c"))) > -1)
-          classes += " weekend";
-        return (
-          <div className={classes} key={i}>
-            <span>{day.toFormat("ccc")}</span>
-          </div>
-        );
-      })}
+      {days
+        .filter((_dy, ind) => ind < 7)
+        .map((day, i) => {
+          let classes = "me-day day-name";
+          if (config.weekends.indexOf(parseInt(day.toFormat("c"))) > -1)
+            classes += " weekend";
+          return (
+            <div className={classes} key={i}>
+              <span>{day.toFormat("ccc")}</span>
+            </div>
+          );
+        })}
       {days.map((day, i) => {
         const dayEvents = getDayEvents(day);
-        let classes = "me-day";
-        if (day.toFormat("d") == "1") classes += " month-first-day";
-        if (config?.weekends.indexOf(parseInt(day.toFormat("c"))) > -1)
-          classes += " weekend";
-        if (today.toFormat("yyyy M dd") == day.toFormat("yyyy M dd"))
-          classes += " today";
         return (
-          <div className={classes} key={i}>
-            <span>{day.toFormat("d")}</span>
-            <div className="me-events-container">
-              {dayEvents.map((event:Event,ii) => (
-                <div key={ii} className="me-event">
-                  <i
-                    className="dot"
-                    style={{ background: event.color ?? "#00F" }}
-                  ></i>
-                  <span>
-                    <span className="me-event-time">
-                      {event.time.toFormat("HH:mm")}
-                    </span>
-                    {event.title}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Day
+            key={i}
+            events={dayEvents}
+            weekends={config.weekends}
+            day={day}
+            today={today}
+          />
         );
       })}
     </div>
