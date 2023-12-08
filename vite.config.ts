@@ -16,6 +16,11 @@ export default defineConfig({
       scss: {},
     },
   },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./test-setup.ts'],
+  },
   build: {
     lib: {
       entry: resolve('src', 'Components/index.ts'),

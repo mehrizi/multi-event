@@ -33,7 +33,7 @@ To install the package via npm simply run the following in root of your project:
 `npm i multi-event-calendar --save`
 
 
-### How to use
+## How to use
 After installaction you can simply use it like this:
 ```JSX
 import { DateTime } from "luxon";
@@ -52,7 +52,7 @@ let events =[{
     <Calendar />
 </MultiEvent>
 ```
-### Configs
+## Configs
 The `MultiEvent` Component follows  the following Interface:
 ```JSX
 interface MultiEventProps {
@@ -63,7 +63,7 @@ interface MultiEventProps {
     today?:DateTime
 }
 ```
-#### Calendar Types available:
+### Calendar Types available:
 ```JSX
 calendarType = 'buddhist'
     | 'chinese'
@@ -79,7 +79,7 @@ calendarType = 'buddhist'
     | 'persian'
     | 'roc'
 ```
-####  `MultiEventConfig`:
+### MultiEventConfig:
 ```JSX
 interface MultiEventConfig {
     weekends: number[]
@@ -88,4 +88,10 @@ interface MultiEventConfig {
 }
 ```
 
+## Tests
+There are two series of tests
+### Jest and react testing libraries
+Unit tests: `npm run test`
+### Story Book based tests
+Integration tests are done by storybook testing features to run them first run `npm run storybook` and then after `npm run storybook:test`
 

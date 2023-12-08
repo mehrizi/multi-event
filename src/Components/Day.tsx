@@ -18,7 +18,7 @@ export const Day = (props: DayProps): JSX.Element => {
   if (props.today.toFormat("yyyy M dd") ==  props.day.toFormat("yyyy M dd"))
     classes += " today";
   return (
-    <div className={classes} >
+    <div className={classes} role="day">
       <span>{ props.day.toFormat("d")}</span>
       <div className="me-events-container">
         {events.map((event: Event, ii) => (
