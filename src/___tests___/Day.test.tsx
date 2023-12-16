@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { Day } from "./Day";
+import { Day } from "../Components/Day";
 import { DateTime } from "luxon";
 import userEvent from '@testing-library/user-event'
-import { Event } from "./MultiEvent";
+import { Event } from "../Components/MultiEvent";
 
 describe("Day Component", () => {
-  test("Render the Day correctly", () => {
+  test("Render the Day correctly", () => { 
     const day = DateTime.now();
     render(<Day day={day} today={day} weekends={[]} />);
     const titleElement = screen.getByText(day.toFormat("d"));

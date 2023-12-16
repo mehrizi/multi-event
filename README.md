@@ -92,6 +92,6 @@ interface MultiEventConfig {
 There are two series of tests
 ### Jest and react testing libraries
 Unit tests: `npm run test`
-### Story Book based tests
+### Storybook based tests
 Integration tests are done by storybook testing features to run them first run `npm run storybook` and then after `npm run storybook:test`
 
